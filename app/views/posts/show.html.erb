@@ -10,7 +10,7 @@
         </div>
       </div><!-- end info -->
       <div id="post_detail" class="postDetail">
-	<h2><%= link_to truncate(h(@post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}), post_url(@post) %></h2>
+	<h2><%= truncate(h(@post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}) %></h2>
           <div class="postDesc">
             <%= simple_format(raw(string_from(h(@post.content.force_encoding('utf-8')), :length => 46, :omission => '')), {}, :sanitize => false) %>
             <%= recognize_stamps_as_links(@post.content.force_encoding('utf-8'), :user => @post.user) %>

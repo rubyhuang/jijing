@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     @children = @post.children
     @user = @post.user
     @tags = Tag.by_self(@user.id).first(5)
+puts @tags.size
     @following = @user.all_following
 
     respond_to do |format|

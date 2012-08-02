@@ -51,7 +51,7 @@ class Tag < ActiveRecord::Base
   class << self
     def by_self(user_id, is_owner=true)
       if is_owner
-        Rails.cache.fetch("user_#{user_id}_owner_tags", :expires_in => 30.minutes){ 
+       
           self_sql=<<-SQL
             SELECT tags.*, COUNT(*) AS weight, MAX(taggings.created_at) AS latest_updated_at FROM tags 
               INNER JOIN taggings ON tags.id = taggings.tag_id 
@@ -61,9 +61,9 @@ class Tag < ActiveRecord::Base
             ORDER BY weight DESC, latest_updated_at DESC
           SQL
           find_by_sql(self_sql)
-        }
+    
       else
-        Rails.cache.fetch("user_#{user_id}_guest_tags", :expires_in => 30.minutes){ 
+        
           self_sql=<<-SQL
             SELECT tags.*, COUNT(*) AS weight, MAX(taggings.created_at) AS latest_updated_at FROM tags 
               INNER JOIN taggings ON tags.id = taggings.tag_id 
@@ -72,12 +72,12 @@ class Tag < ActiveRecord::Base
             ORDER BY weight DESC, latest_updated_at DESC
           SQL
           find_by_sql(self_sql)
-        }
+     
       end
     end
 
     def by_others(user_id)
-      Rails.cache.fetch("user_#{user_id}_others_tags", :expires_in => 30.minutes){
+    
         others_sql=<<-SQL
           SELECT tags.*, COUNT(*) AS weight, MAX(taggings.created_at) AS latest_updated_at FROM tags
             INNER JOIN taggings ON tags.id = taggings.tag_id 
@@ -87,7 +87,7 @@ class Tag < ActiveRecord::Base
           ORDER BY weight DESC, latest_updated_at DESC
         SQL
         find_by_sql(others_sql)
-      }
+
     end
 
     def top_weighted(num = MAX_TAGS_SIZE)

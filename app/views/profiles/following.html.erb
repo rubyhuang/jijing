@@ -1,6 +1,6 @@
 <div class="main">
   <div class="followUserList">
-    <h5>关注</h5>
+    <h5>Following</h5>
     <ul>
     <% @following.each do |following| -%>
       <li>
@@ -10,7 +10,7 @@
           </div>
           <div class="info">
             <p><%=link_to h(following.name), profile_url(following), :class=>"author" %>
-              <em>随想<%= following.posts_count %>篇</em></p>
+              <em><%= following.posts_count %> immedrs</em></p>
           <% if following.posts_count > 0 -%>
             <% post = following.posts.first -%>
             <p class="desc"><%= link_to raw(recognize_stamps_as_links(truncate(h(post.content.force_encoding('utf-8')), :length => 46))), post_url(post) %><small><%= standard_date_text(post.created_at) %></small></p>

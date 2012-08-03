@@ -6,9 +6,9 @@
     <% if user_signed_in? && current_user != @user -%>
       <div id="follow">
       	<% if current_user.following?(@user) -%>
-          <%= link_to "取消关注", unfollow_url(@user), :class=>"unfollow", :method => :delete, :remote => true -%>
+          <%= link_to "Unfollow", unfollow_url(@user), :class=>"unfollow", :method => :delete, :remote => true -%>
       	<% else -%>
-          <%= link_to "关注", follow_url(@user), :class=>"follow", :method => :post, :remote => true -%>
+          <%= link_to "Follow", follow_url(@user), :class=>"follow", :method => :post, :remote => true -%>
       	<% end -%>
       </div>
     <% end -%>
@@ -30,12 +30,12 @@
 
 <% if @following.size > 0 -%>
   <div class="userList2">
-    <h5>关注</h5>
+    <h5>Following</h5>
     <ul>
       <% @following.each do |following| -%>
         <li><%= link_to image_tag("usericon#{rand(12)}-72.png", :title=> h(following.name)), following_url(following) %></li>
       <% end -%>
     </ul><br clear="all" />
-    <div class="more">全部<%= @following.size %>人&nbsp;&nbsp;更新29条</div>
+    <div class="more">Total <%= @following.size %>人&nbsp;&nbsp;Update 29 items</div>
   </div>
 <% end -%>

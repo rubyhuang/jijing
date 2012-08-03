@@ -2,7 +2,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 	margin:0;
 	padding:0;
 }
-html{background:#e2f3ff;color:#707070;width:384px;height:444px;overflow:hidden;}
+html{background:#e6f4fe;color:#707070;width:384px;height:444px;overflow:hidden;}
 body{font:13px/1.231 "微软雅黑", "Microsoft yahei", "宋体",arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small}
 select,input,textarea,button{font:99% arial,helvetica,clean,sans-serif}
 table{font-size:inherit;font:100%}
@@ -30,7 +30,8 @@ h1{float:left;}
 .pDone{background:url(../assets/bookmarklet.gif) no-repeat 0 0;width:56px;height:25px;border:0;color:#fff;font-size:108%;line-height:25px;cursor:pointer;}
 .pDone:hover{background-position:-71px 0;}
 .pWrite{background:url(../assets/bookmarklet.gif) no-repeat -145px 0;width:67px;height:25px;border:0;color:#fff;font-size:108%;line-height:25px;cursor:pointer;}
-.pWrite:hover{background-position:-231px 0;}
+.pWrite:link,.pWrite:visited{color:#fff;font-size:108%;line-height:25px;}
+.pWrite:hover{background-position:-231px 0;color:#fff;}
 
 .listBox{margin:12px 12px 0 12px;}
 .listBox .pWrite{float:right;}
@@ -54,6 +55,6 @@ h1{float:left;}
 .user-txt{width:240px;height:25px;font-size:108%;font-weight:bold;line-height:25px;color:#acacac;border:1px solid #acacac;}
 .user-check{margin-right:4px;}
 .login-btn{background:url(../assets/btn.gif) 0 -176px no-repeat;display:block;width:77px;height:32px;text-indent:-2000em;border:0;cursor:pointer;}
-.login-btn:hover{background-position:-97px -176px;}
+.login-btn:hover{background-position:-97px -176px;color:#fff;}
 .signup-btn{background:url(../assets/btn.gif) -194px -176px no-repeat;display:block;width:77px;height:32px;text-indent:-2000em;border:0;cursor:pointer;}
-.signup-btn:hover{background-position:-291px -176px;}
+.signup-btn:hover{background-position:-291px -176px;color:#fff;}

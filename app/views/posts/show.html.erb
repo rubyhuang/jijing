@@ -4,9 +4,9 @@
       <div class="postInfo">
         <div class="datetime"><%= standard_date_text(@post.created_at) %></div>
         <div id="post_actions" class="tools">
-          <%= link_to '编辑', edit_post_path(@post), :onclick=>"document.getElementById('post_edit_form').style.display='block';document.getElementById('post_detail').style.display='none';document.getElementById('post_actions').style.display='none';" %>
+          <%= link_to 'edit', edit_post_path(@post), :onclick=>"document.getElementById('post_edit_form').style.display='block';document.getElementById('post_detail').style.display='none';document.getElementById('post_actions').style.display='none';" %>
           <span class="space">|</span>
-          <%= link_to '删除', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div><!-- end info -->
       <div id="post_detail" class="postDetail">
@@ -19,14 +19,14 @@
    </div>
 
     <div class="mod postMod">
-      <div class="mod-title">灵感链接</div>
+      <div class="mod-title">inspired by</div>
       <div class="mod-detail mrginb42">
         <h5><%= link_to h(truncate(@post.shadow.title, :length => 50)), @post.shadow.web_url, :target=>"_bliank" %></h5>
         <p><%=h @post.shadow.description %></p>
         <p><%= link_to @post.shadow.web_url, @post.shadow.web_url, :class=>"web", :target=>"_bliank" %></p>
       </div>
 
-      <div class="mod-title">留言（<%= @children.size %>)条</div>
+      <div class="mod-title">comments (<%= @children.size %>)</div>
 
       <% @children.each do |post| %>
         <div class="mod-detail messageInfo">
@@ -62,8 +62,8 @@
         <%= f.hidden_field :link_url, {:value => post_url(@post)} %>
         <%= f.hidden_field :parent_id, {:value => @post.id} %>
         <div class="cText"><%= f.text_area :content %></div>
-        <div class="tips">一则留言同时发布在你的主页作为一则随想</div>
-        <%= f.submit "完成", :class=>"done" %>
+        <div class="tips">Notice: a comment will be published on your profile as a post</div>
+        <%= f.submit "Submit", :class=>"done" %>
         <br clear="all" />
       <% end %>
     </div>

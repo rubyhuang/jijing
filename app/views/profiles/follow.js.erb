@@ -1,1 +1,1 @@
-$('#follow').html("<%= escape_javascript(link_to "取消关注", unfollow_url(@user), :method => :delete, :remote => true) -%>"); 
+$('#follow').html("<%= escape_javascript(link_to "unfolow", unfollow_url(@user), :class => "unfollow", :method => :delete, :remote => true) -%>"); 

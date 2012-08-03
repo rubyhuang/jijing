@@ -1,18 +1,26 @@
-<h1>即景</h1>
+<h1>immedr</h1>
 <div class="header">
   <%= link_to image_tag("logo.gif"), home_url, :class=>"logo" %>
-  <h2 class="sligon">随时想，随时记</h2>       
+  <h2 class="sligon">Record thoughts immediately</h2>       
   <div class="links loginInfo">
-    <%= link_to image_tag("jj_write.gif", :alt => "随时想，随时记"), render("share/bookmarklet_bootstrap", :path => "/bookmarklets/jijing_bookmarklet"), :class => "grab jj-write", :title=>"随时想，随时记" %>
+    <%= link_to "write", render("share/bookmarklet_bootstrap", :path => "/bookmarklets/jijing_bookmarklet"), :class => "grab jj-write", :title=>"随时想，随时记" %>
     <%#= link_to image_tag("jj_write.gif"), new_post_path, :class=>"jj-write" %>
     <% if user_signed_in? -%>
       <%= link_to h(current_user.name), profile_url(current_user), :class=>"borderl0" %>
-      <%= link_to "发现", explore_url %>
-      <%= link_to "退出", logout_url %>
+      <%= link_to_unless_current("explore", explore_url) do
+        ("<span class='cur'>explore</span>").html_safe
+      end %>
+      <%= link_to "sign out", logout_url %>
     <% else -%>
-      <%= link_to "注册", signup_url, :class=>"borderl0" %>
-      <%= link_to "发现", explore_url %>
-      <%= link_to "登录", login_url %>
+      <%= link_to_unless_current("sign up", signup_url, :class=>"borderl0") do
+        ("<span class='cur borderl0'>sign up</span>").html_safe
+      end %>
+      <%= link_to_unless_current("explore", explore_url) do
+        ("<span class='cur'>explore</span>").html_safe
+      end %>
+      <%= link_to_unless_current("sign in", login_url) do
+        ("<span class='cur'>sign in</span>").html_safe
+      end %>
     <% end -%>
   </div>
 </div>

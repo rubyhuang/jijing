@@ -4,11 +4,11 @@
 </div>
 
 <div class="searchTag">
-  <a id="hot_tag" href="#" onclick="document.getElementById('hot_tag_c').style.display='block';document.getElementById('hot_tag').style.display='none';document.getElementById('hot_user_c').style.display='none';document.getElementById('hot_user').style.display='block';">热门标签</a>
-  <span id="hot_tag_c" class="cur" style="display:none" onclick="document.getElementById('hot_tag_c').style.display='none';document.getElementById('hot_tag').style.display='none';">热门标签X</span>
+  <a id="hot_tag" href="#" onclick="document.getElementById('hot_tag_c').style.display='block';document.getElementById('hot_tag').style.display='none';document.getElementById('hot_user_c').style.display='none';document.getElementById('hot_user').style.display='block';">Popular Hashtags</a>
+  <span id="hot_tag_c" class="cur" style="display:none" onclick="document.getElementById('hot_tag_c').style.display='none';document.getElementById('hot_tag').style.display='none';">Popular Hashtags X</span>
   <span class="space">|</span>
-  <a id="hot_user" href="#" onclick="document.getElementById('hot_user_c').style.display='block';document.getElementById('hot_user').style.display='none';document.getElementById('hot_tag_c').style.display='none';document.getElementById('hot_tag').style.display='block';">人气用户</a>
-  <span id="hot_user_c" class="cur" style="display:none" onclick="document.getElementById('hot_user_c').style.display='none';document.getElementById('hot_user').style.display='none';">人气用户X</span><br clear='all' />
+  <a id="hot_user" href="#" onclick="document.getElementById('hot_user_c').style.display='block';document.getElementById('hot_user').style.display='none';document.getElementById('hot_tag_c').style.display='none';document.getElementById('hot_tag').style.display='block';">Active Immedrs</a>
+  <span id="hot_user_c" class="cur" style="display:none" onclick="document.getElementById('hot_user_c').style.display='none';document.getElementById('hot_user').style.display='none';">Active Immedrs X</span><br clear='all' />
 </div>
 
 <div class="main">
@@ -26,7 +26,7 @@
             <%= recognize_stamps_as_links(post.content.force_encoding('utf-8'), :user => post.user) %>
           </div>
           <% count = post.children.size -%>          
-          <div class="postMore">全文<%= post.content.length %>字<% if count > 0 -%>&nbsp;&nbsp;&nbsp;&nbsp;<%= count %>条评论<% end -%></div>
+          <div class="postMore"><%= post.content.length %> characters<% if count > 0 -%>&nbsp;&nbsp;&nbsp;&nbsp;<%= count %> comment<% end -%></div>
         </div><br clear="all" />
       </div>
     <% end -%>

@@ -4,6 +4,10 @@
     <table class="userTable">
       <tbody>
         <tr>
+          <td class="coll">Username</td>
+          <td class="colr"><%= f.text_field :username, :class=>"user-txt" %><small>*</small></td>
+        </tr>
+        <tr>
           <td class="coll">Email</td>
           <td class="colr"><%= f.email_field :email, :class=>"user-txt" %><small>*</small></td>
         </tr>        

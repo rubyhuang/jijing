@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => { :case_sensitive => false }
   validates :username, :format => { :with => /^[a-zA-Z0-9_-]+$/, :message => "Only letters, numbers, _ and - allowed" }
   validates :username, :length => { :in => 4..16 }
+  validates_each :name do |record, attr, value|
+    record.errors.add(attr, 'must start with letters or numbers') unless value.match(/^[a-zA-Z0-9]([a-zA-Z0-9_-]+)*$/i)
+  end
   
   attr_accessor :login
   attr_accessible :login

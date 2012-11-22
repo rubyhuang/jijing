@@ -20,12 +20,17 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  validates :username, :presence => true
+  validates :username, :uniqueness => { :case_sensitive => false }
+  validates :username, :format => { :with => /^[a-zA-Z0-9_-]+$/, :message => "Only letters, numbers, _ and - allowed" }
+  validates :username, :length => { :in => 4..16 }
   
   attr_accessor :login
   attr_accessible :login
 
   def name
-    self.email.split('@').first
+    self.username || self.email.split('@').first
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)

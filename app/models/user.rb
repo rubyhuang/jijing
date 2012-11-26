@@ -18,12 +18,33 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  def name
-    self.email.split('@').first
+  validates :username, :presence => true
+  validates :username, :uniqueness => { :case_sensitive => false }
+  validates :username, :format => { :with => /^[a-zA-Z0-9_-]+$/, :message => "Only letters, numbers, _ and - allowed" }
+  validates :username, :length => { :in => 4..16 }
+  validates_each :name do |record, attr, value|
+    record.errors.add(attr, 'must start with letters or numbers') unless value.match(/^[a-zA-Z0-9]([a-zA-Z0-9_-]+)*$/i)
   end
+  
+  attr_accessor :login
+  attr_accessible :login
+
+  def name
+    self.username || self.email.split('@').first
+  end
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
+    end
+  end
+
   
   # Get the updated posts number from last visited on the following profile page
   def following_posts_count

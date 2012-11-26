@@ -4,6 +4,11 @@
     <table class="userTable">
       <tbody>
         <tr>
+          <td class="coll">User name</td>
+          <td class="colr"><%= f.text_field :username, :class=>"user-txt" %><small>*</small>
+          <div class="tips">(Must be at least 4 characters)</div></td>
+        </tr>
+        <tr>
           <td class="coll">Email</td>
           <td class="colr"><%= f.email_field :email, :class=>"user-txt" %><small>*</small></td>
         </tr>        
@@ -16,11 +21,6 @@
           <td class="coll">Re-enter password</td>
           <td class="colr"><%= f.password_field :password_confirmation, :class=>"user-txt" %></td>
         </tr>
-        <tr>
-          <td class="coll">User name</td>
-          <td class="colr"><input class="user-txt" type="text" /><small>*</small>
-          <div class="tips">(Must be at least 4 characters)</div></td>
-        </tr>        
         <tr>
           <td class="coll">&nbsp;</td>
           <td class="colr">
